@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todoapp/providers.dart';
 import 'package:todoapp/model.dart';
+import 'package:todoapp/add_todo.dart';
 
 
 class EditView extends ConsumerWidget{
@@ -63,7 +64,6 @@ class EditView extends ConsumerWidget{
                                     ),
                                     TextButton(
                                       onPressed: (){
-                                        ref.read(todosProvider.notifier).editDescription(todo.id, description);
                                         Navigator.pop(context, 'OK');
                                       },
                                       child: const Text('OK'),
@@ -78,7 +78,7 @@ class EditView extends ConsumerWidget{
                         child: ListTile(
                             title:todo.isCompleted?Text('${todo.description}'):Text('${todo.description}', style: TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey)),
                             trailing: InkWell(
-                              onTap: () => ref.read(todosProvider.notifier).removeTodo(todo.id),
+                              onTap: (){},
                               child: Icon(Icons.close, color: Colors.red,),
                             )
                         )

@@ -8,8 +8,6 @@ class AddToDo extends StatelessWidget {
    AddToDo({Key? key,}) : super(key: key);
 
 
-
-
   final CollectionReference<ToDo> todoRef = FirebaseFirestore.instance.collection('todos')
       .withConverter<ToDo>(
     fromFirestore: (snapshots, _) => ToDo.fromJson(snapshots.data()!),
@@ -18,14 +16,20 @@ class AddToDo extends StatelessWidget {
 
 
   addToDo({String? description})async{
+    final todoSnapshot = await todoRef.get();
+    final todos = todoSnapshot.docs.length;
     await todoRef.add(
-        ToDo(id: todolist.length + 1,     //ここをリストの長さからdocの長さに変更したい　
+        ToDo(
             description: description!,
             isCompleted: true,
-            key: (todolist.length + 1).toString()  //ここをリストの長さからdocの長さに変更したい
+            key: (todos + 1).toString(), //ここをリストの長さからdocの長さに変更したい
         )
     );
 
+  }
+
+  deleteToDo({String? id}) async {
+    await todoRef.doc(id).delete();
   }
 
   @override
