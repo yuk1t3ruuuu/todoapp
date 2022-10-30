@@ -22,7 +22,8 @@ class AddToDo extends StatelessWidget {
         ToDo(
             description: description!,
             isCompleted: true,
-            key: (todos + 1).toString(), //ここをリストの長さからdocの長さに変更したい
+            key: (todos + 1).toString(),
+            seq: todos + 1
         )
     );
 

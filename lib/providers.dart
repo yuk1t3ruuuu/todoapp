@@ -2,10 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todoapp/model.dart';
 
 List<ToDo> todolist = [
-  ToDo( description: 'タスク1', isCompleted: true, key: '1', ),
-  ToDo( description: 'タスク2', isCompleted: true, key: '2',),
-  ToDo(description: 'タスク3', isCompleted: true, key: '3',),
-  ToDo(description: 'タスク4', isCompleted: true, key: '4',)
+  ToDo( description: 'タスク1', isCompleted: true, key: '1',seq: 1 ),
+  ToDo( description: 'タスク2', isCompleted: true, key: '2',seq: 1),
+  ToDo(description: 'タスク3', isCompleted: true, key: '3',seq: 1),
+  ToDo(description: 'タスク4', isCompleted: true, key: '4',seq: 1)
 ];
 
 class TodoNotifier extends StateNotifier<List<ToDo>> {
